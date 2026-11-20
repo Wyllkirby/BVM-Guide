@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best Ballpen Vending Machine – User Guide</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1d2330;
+    --muted: #5b6475;
+    --border: #dfe3ea;
+    --accent: #2a5bd7;
+    --accent-soft: #e7eefc;
+    --green: #2e9e4f;
+    --red: #d63b3b;
+    --purple: #7a45c9;
+    --warn-bg: #fff4dc;
+    --warn-text: #7a4b00;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151c;
+      --card: #1b2029;
+      --text: #e8ebf2;
+      --muted: #a0a9ba;
+      --border: #2d3442;
+      --accent: #7aa2ff;
+      --accent-soft: #1f2a44;
+      --warn-bg: #3a2f14;
+      --warn-text: #f1cf8a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 48px 20px 40px;
+  }
+  header h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 5vw, 2.6rem); }
+  header p { margin: 0; opacity: 0.92; font-size: 1.05rem; }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 14px 16px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+  section { margin-top: 36px; }
+  h2 { font-size: 1.5rem; margin: 0 0 14px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .fact { text-align: center; }
+  .fact .big { font-size: 1.9rem; font-weight: 700; color: var(--accent); }
+  .fact .small { color: var(--muted); font-size: 0.92rem; }
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ol.steps li {
+    counter-increment: s;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+  }
+  ol.steps li::before {
+    content: counter(s);
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+  }
+  ol.steps strong { display: block; }
+  .btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  .btn { display: flex; gap: 14px; align-items: center; }
+  .dot { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 3px solid rgba(0,0,0,0.15); }
+  .dot.g { background: var(--green); }
+  .dot.r { background: var(--red); }
+  .dot.p { background: var(--purple); }
+  .lcd {
+    background: #1d3b2a;
+    color: #b6f5c8;
+    font-family: "Courier New", monospace;
+    border-radius: 8px;
+    padding: 6px 10px;
+    display: inline-block;
+    margin: 2px 0;
+    font-size: 0.95rem;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+  .table-wrap { overflow-x: auto; }
+  .note {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 14px;
+  }
+  details { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 10px 0 0; color: var(--muted); }
+  footer { text-align: center; color: var(--muted); padding: 28px 16px 40px; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Best Ballpen Vending Machine {BVM}</h1>
+  <p>How to buy a ballpen in 6 easy steps</p>
+</header>
+
+<nav>
+  <a href="#how">How to buy</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#screen">Screen messages</a>
+  <a href="#sounds">Sounds</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<main>
+
+  <section id="facts">
+    <div class="facts">
+      <div class="card fact"><div class="big">&#8369;15</div><div class="small">per ballpen</div></div>
+      <div class="card fact"><div class="big">10</div><div class="small">pens maximum per purchase</div></div>
+      <div class="card fact"><div class="big">Exact</div><div class="small">amount only, no change</div></div>
+      <div class="card fact"><div class="big">&#8369;1 &#8369;5 &#8369;10</div><div class="small">coins accepted</div></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How to buy a ballpen</h2>
+    <ol class="steps">
+      <li><div><strong>Wake up the machine</strong>
+        The screen shows <span class="lcd">Good day! Would you like a pen?</span> then <span class="lcd">Press PURPLE</span>. Press the <b>purple</b> button to start.</div></li>
+      <li><div><strong>Choose how many pens</strong>
+        The screen shows <span class="lcd">How many pens?</span> Press <b>green</b> to add one and <b>red</b> to remove one (1 to 10). Press <b>purple</b> to confirm.</div></li>
+      <li><div><strong>Check the price</strong>
+        The machine shows the total for a moment, for example <span class="lcd">2 pcs = P30</span></div></li>
+      <li><div><strong>Insert the exact amount</strong>
+        The screen shows <span class="lcd">Insert exact P30</span> and the amount inserted so far. Drop your coins in the coin slot one at a time.</div></li>
+      <li><div><strong>Collect your ballpen</strong>
+        When the amount is complete, the screen shows <span class="lcd">Dispensing...</span> and the pens drop into the chute. Take them from the pickup slot at the bottom.</div></li>
+      <li><div><strong>Done</strong>
+        The machine says thank you for buying and goes back to the start screen.</div></li>
+    </ol>
+    <div class="note"><b>Please note:</b> the machine cannot give change. If you insert more than the total, the extra money is kept, so please insert the exact amount.</div>
+  </section>
+
+  <section id="buttons">
+    <h2>The three buttons</h2>
+    <div class="btns">
+      <div class="card btn"><div class="dot g"></div><div><b>Green: ADD</b><br>Adds one pen to your order.</div></div>
+      <div class="card btn"><div class="dot r"></div><div><b>Red: MINUS</b><br>Removes one pen. At the payment screen it cancels your order, only if no coin has been inserted yet.</div></div>
+      <div class="card btn"><div class="dot p"></div><div><b>Purple: CONFIRM</b><br>Starts your purchase and confirms your choice.</div></div>
+    </div>
+  </section>
+
+  <section id="screen">
+    <h2>What the screen tells you</h2>
+    <div class="card table-wrap">
+      <table>
+        <tr><th>Screen</th><th>Meaning</th></tr>
+        <tr><td><span class="lcd">Good day! Would you like a pen?</span></td><td>Ready. Press the purple button to begin.</td></tr>
+        <tr><td><span class="lcd">How many pens?</span></td><td>Choose 1 to 10 with green and red, then press purple.</td></tr>
+        <tr><td><span class="lcd">Insert exact P30</span></td><td>Insert coins until the amount inserted matches the total.</td></tr>
+        <tr><td><span class="lcd">Dispensing...</span></td><td>Please wait while the pens come out.</td></tr>
+        <tr><td><span class="lcd">Thank you for buying at the best vending machine!</span></td><td>Purchase complete.</td></tr>
+        <tr><td><span class="lcd">SOLD OUT</span></td><td>There are no pens left. Please come back later.</td></tr>
+        <tr><td><span class="lcd">RESTOCKING</span></td><td>The machine is open for refilling and cannot sell right now.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="sounds">
+    <h2>What the beeps mean</h2>
+    <div class="card table-wrap">
+      <table>
+        <tr><th>Sound</th><th>Meaning</th></tr>
+        <tr><td>1 short beep</td><td>A coin was counted, or a button was pressed.</td></tr>
+        <tr><td>2 short beeps</td><td>Payment complete, dispensing starts.</td></tr>
+        <tr><td>1 long beep</td><td>Thank you screen, or the machine is sold out.</td></tr>
+        <tr><td>3 short beeps</td><td>Stock saved (owner restocking).</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions and answers</h2>
+    <details><summary>My coin came back out. What do I do?</summary>
+      <p>The coin slot checks each coin. A dirty, bent or foreign coin may be rejected. Wipe it and try again, or use another coin.</p></details>
+    <details><summary>I put in coins but not enough. What happens?</summary>
+      <p>The amount stays on the screen. Keep inserting coins until it matches the total. If you leave, the money stays as credit for the next purchase.</p></details>
+    <details><summary>Can I cancel my order?</summary>
+      <p>You can cancel with the red button at the payment screen, but only before any coin has been inserted. After that, please complete the purchase.</p></details>
+    <details><summary>Why can I only choose up to 10 pens?</summary>
+      <p>That is the limit for one purchase. If fewer pens are left in the machine, you can only choose up to what is left.</p></details>
+    <details><summary>The screen is not responding.</summary>
+      <p>If you do nothing for 3 minutes, the machine goes back to the start screen. If it still does not respond, please tell the owner.</p></details>
+  </section>
+
+  <section id="owner">
+    <div class="note"><b>Tip:</b> if you close the door without pressing purple, the change is discarded and the old stock count stays. Always press purple to save.</div>
+  </section>
+
+</main>
+
+<footer>
+  Best Ballpen Vending Machine &middot; Arduino Uno project - BVM
+</footer>
+
+</body>
+</html>
