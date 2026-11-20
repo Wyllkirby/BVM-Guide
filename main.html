@@ -136,13 +136,32 @@
   details { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; margin-bottom: 10px; }
   summary { cursor: pointer; font-weight: 600; }
   details p { margin: 10px 0 0; color: var(--muted); }
+  .help-bar {
+    background: var(--accent-soft);
+    color: var(--text);
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 0.97rem;
+  }
+  .help-bar a { color: var(--accent); font-weight: 600; }
+  .contact-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 999px;
+    margin-top: 10px;
+  }
+  .contact-card { text-align: center; }
   footer { text-align: center; color: var(--muted); padding: 28px 16px 40px; font-size: 0.9rem; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Best Ballpen Vending Machine {BVM}</h1>
+  <h1>Best Ballpen Vending Machine</h1>
   <p>How to buy a ballpen in 6 easy steps</p>
 </header>
 
@@ -152,7 +171,10 @@
   <a href="#screen">Screen messages</a>
   <a href="#sounds">Sounds</a>
   <a href="#faq">FAQ</a>
+  <a href="#help">Need help?</a>
 </nav>
+
+<div class="help-bar">Having a problem? <a href="https://www.facebook.com/ivan.arellano.49723" target="_blank" rel="noopener noreferrer">Message here</a></div>
 
 <main>
 
@@ -240,10 +262,18 @@
     <div class="note"><b>Tip:</b> if you close the door without pressing purple, the change is discarded and the old stock count stays. Always press purple to save.</div>
   </section>
 
+  <section id="help">
+    <h2>Having a problem?</h2>
+    <div class="card contact-card">
+      <p>If the machine does not work, a coin is stuck, or something looks wrong, please send us a message and tell us what happened.</p>
+      <a class="contact-btn" href="https://www.facebook.com/ivan.arellano.49723" target="_blank" rel="noopener noreferrer">Message us on Facebook</a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  Best Ballpen Vending Machine &middot; Arduino Uno project - BVM
+  Best Ballpen Vending Machine &middot; Arduino Uno project
 </footer>
 
 </body>
